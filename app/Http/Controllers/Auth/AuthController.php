@@ -21,6 +21,8 @@ class AuthController extends Controller
         $user->password = Hash::make($data['password']);
         $user->save();
 
+        $user->profile()->create([]);
+
         $role = $user->roles->name;
         
         return response()->json([
